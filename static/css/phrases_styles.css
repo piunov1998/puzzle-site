@@ -1,0 +1,17 @@
+.main {
+    text-align: center;
+    padding-top: 5%;
+    background-color: dimgray;
+}
+
+.pass_label {
+    font-family: monospace;
+    font-size: x-large;
+}
+
+.correct {
+    font-family: monospace;
+    font-size: xx-large;
+    font-weight: bold;
+    letter-spacing: 3px;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+          href="{{ url_for('static',filename='css/phrases_styles.css') }}">
+    <title>Enter password</title>
+</head>
+<body class="main">
+<p>
+    <input id="pass" spellcheck="false" maxlength="10"
+           placeholder="only digits">
+<p>
+    <label class="correct" id="phrase"></label>
+<p>
+    <video controls id="vid" hidden="hidden" autoplay="autoplay" width="600"
+           height="500"></video>
+</p>
+<script lang="javascript"
+        src="{{ url_for('static',filename='scripts/phrases.js') }}"></script>
+</body>

@@ -1,0 +1,20 @@
+.header {
+    font-family: DarkSouls;
+    font-weight: bold;
+}
+
+.list {
+    background: dimgray;
+    margin: auto;
+    width: 600px;
+    padding: 30px;
+    font-size: x-large;
+    font-family: monospace;
+}
+
+@font-face {
+    font-family: "DarkSouls";
+    src: url("../fonts/OptimusPrincepsSemiBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}

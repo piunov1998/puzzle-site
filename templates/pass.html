@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet"
+          href="{{ url_for('static',filename='css/pass_styles.css') }}">
+    <title>Enter password</title></head>
+<body class="main">
+<p>
+    <label class="pass_label">>Enter password:<br>
+        <input id="pass" spellcheck="false" placeholder="AaBbCc..., good luck">
+    </label>
+<p>
+    <button id="submit">Submit</button>
+<p>
+    <label class="correct" id="correct">___________</label>
+<p>
+    <button hidden="true" id="link"
+            onclick="let vid=document.getElementById('vid');vid.hidden=false;vid.play()"></button>
+<p>
+    <video id="vid" hidden="hidden"></video>
+</p>
+<script lang="javascript">
+    let inp = document.getElementById('pass')
+    inp.addEventListener('keypress', function (event) {
+        if (event.key === 'Enter') {
+            document.getElementById('submit').click()
+        }
+    })
+    document.getElementById('submit').onclick = function () {
+        let xhr = new XMLHttpRequest()
+        let pass = document.getElementById('pass').value
+        let correct = document.getElementById('correct')
+
+        xhr.open("GET", "/password/check?pass=" + pass)
+
+        xhr.onload = () => {
+
+            if (xhr.status == 201) {
+                let link_ = document.getElementById('link')
+                link_.innerText = "???"
+                link_.hidden = false
+                let src = document.createElement('source')
+                src.type = 'video/webm'
+                src.src = 'data:video/webm;base64,' + xhr.response
+                document.getElementById('vid').appendChild(src)
+                let v = xhr.response
+                correct.innerText = pass
+            } else {
+                correct.innerText = xhr.responseText
+            }
+        }
+        xhr.send()
+    }
+</script>
+</body>
+</html>
