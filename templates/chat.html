@@ -7,14 +7,16 @@
 </head>
 <body style="background: black; min-height: 95vh; vertical-align: bottom;">
 <p class="block"><label class="nick_field">Nick:
-    <input id="nick" placeholder="Your name" class="nick_field">
+    <input id="nick" placeholder="Your name" class="nick_field"
+           autocomplete="off">
     <button id="connect">Connect</button>
 </label>
 </p>
 <p class="block"><textarea class="text" id="output" rows="10" cols="50" readonly
                            disabled></textarea></p>
 <p class="block">
-    <input class="text_field" id="text" placeholder="text message">
+    <input class="text_field" id="text" placeholder="text message"
+           autocomplete="off">
     <button class="buttons" id="send">Send</button>
 </p>
 
