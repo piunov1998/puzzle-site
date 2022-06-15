@@ -4,6 +4,10 @@
     font-size: larger;
     width: 90vw;
     margin-left: 1vw;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    outline: 0;
 }
 
 .nick_field {
