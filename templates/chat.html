@@ -1,10 +1,21 @@
+<!DOCTYPE html>
 <html>
-<head><title>WebSockets</title></head>
-<body style="background: black; text-align: center">
-<p><label style="color: aliceblue">Nick: <input id="nick" placeholder="Your name" size="5"></label>></p>
-<p><input id="text" placeholder="text message"><button id="send">Send</button></p>
-<p><textarea id="output" rows="10" cols="50" readonly></textarea></p>
-</body>
+<head>
+    <title>Chat</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static',filename='css/main_styles.css') }}">
+</head>
+<body style="background: black; min-height: 95vh; vertical-align: bottom;">
+<p class="block"><label class="nick_field">Nick:
+    <input id="nick" placeholder="Your name" class="nick_field">
+</label>
+</p>
+<p class="block"><textarea class="text" id="output" rows="10" cols="50" readonly
+                           disabled></textarea></p>
+<p class="block">
+    <input class="text_field" id="text" placeholder="text message">
+    <button class="buttons" id="send">Send</button>
+</p>
 
 <script lang="javascript">
     let ws = new WebSocket('ws://149.154.67.79:5678')
@@ -30,5 +41,5 @@
         out.scrollTop = out.scrollHeight
     }
 </script>
-
+</body>
 </html>

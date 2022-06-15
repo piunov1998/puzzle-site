@@ -1,0 +1,37 @@
+.text_field {
+    background: black;
+    color: white;
+    font-size: larger;
+    width: 90vw;
+    margin-left: 1vw;
+}
+
+.nick_field {
+    background: black;
+    color: white;
+    font-size: larger;
+    width: 200px;
+}
+
+.text {
+    background: black;
+    color: darkgreen;
+    font-size: xx-large;
+    resize: none;
+    border: 0;
+    vertical-align: bottom;
+    height: 80vh;
+    width: 90vw;
+    margin-left: 2vw;
+    direction: revert;
+}
+
+.buttons {
+    background: gray;
+    color: white;
+    font-size: larger;
+}
+
+.block {
+    vertical-align: bottom;
+}
