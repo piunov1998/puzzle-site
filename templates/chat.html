@@ -8,6 +8,7 @@
 <body style="background: black; min-height: 95vh; vertical-align: bottom;">
 <p class="block"><label class="nick_field">Nick:
     <input id="nick" placeholder="Your name" class="nick_field">
+    <button id="connect">Connect</button>
 </label>
 </p>
 <p class="block"><textarea class="text" id="output" rows="10" cols="50" readonly
@@ -18,12 +19,39 @@
 </p>
 
 <script lang="javascript">
-    let ws = new WebSocket('ws://149.154.67.79:5678')
-
+    let ws;
+    let connect_btn = document.getElementById('connect')
     let nick = document.getElementById('nick')
     let btn = document.getElementById('send')
     let text = document.getElementById('text')
     let out = document.getElementById('output')
+    let notification_sound = new Audio("{{ url_for('static', filename='sounds/notification.wav') }}")
+    notification_sound.volume = 0.1
+
+    connect_btn.onclick = function () {
+        ws = new WebSocket('ws://149.154.67.79:5678')
+
+        ws.onmessage = function (msg) {
+            out.append(msg.data + '\n')
+            out.scrollTop = out.scrollHeight
+            if (document.hidden) {
+                notification_sound.play()
+            }
+        }
+        ws.onopen = function () {
+            out.append('SYSTEM: connected\n')
+            nick.disabled = true
+            connect_btn.disabled = true
+        }
+        ws.onerror = function () {
+            out.append('Some error occurred, try to reload page\n')
+        }
+        ws.onclose = function () {
+            out.append('SYSTEM: disconnected\n')
+            nick.disabled = false
+            connect_btn.disabled = false
+        }
+    }
 
     btn.onclick = function () {
         ws.send(nick.value + ': ' + text.value)
@@ -35,11 +63,6 @@
             btn.click()
         }
     })
-
-    ws.onmessage = function (msg) {
-        out.append(msg.data + '\n')
-        out.scrollTop = out.scrollHeight
-    }
 </script>
 </body>
 </html>
