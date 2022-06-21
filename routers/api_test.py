@@ -1,7 +1,9 @@
 import flask
 import logging
 
+
 test_router = flask.Blueprint('test', __name__, url_prefix='/test')
+logging.basicConfig(level=logging.INFO)
 
 
 @test_router.post('/')
