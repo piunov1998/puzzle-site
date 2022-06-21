@@ -8,6 +8,7 @@ flask_cors.CORS(app)
 app.register_blueprint(pass_router)
 app.register_blueprint(phrase_router)
 app.register_blueprint(chat_router)
+app.register_blueprint(test_router)
 
 
 @app.route('/')
