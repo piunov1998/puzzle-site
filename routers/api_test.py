@@ -6,8 +6,9 @@ test_router = flask.Blueprint('test', __name__, url_prefix='/test')
 
 @test_router.post('/')
 def main():
+    logging.info(flask.request.data)
+    logging.info(flask.request.data.decode('utf-8'))
     try:
-        logging.info(flask.request.data.decode('utf-8'))
         with open('./log.txt', 'a', encoding='utf-8') as file:
             file.write(flask.request.data.decode('utf-8'))
     except:
