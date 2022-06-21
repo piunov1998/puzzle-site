@@ -3,7 +3,7 @@ import flask
 test_router = flask.Blueprint('test', __name__, url_prefix='/test')
 
 
-@pass_router.get('/')
+@test_router.get('/')
 def main():
     try:
         print(flask.data)
